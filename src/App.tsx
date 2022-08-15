@@ -1,26 +1,30 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { Layout, Typography } from 'antd';
 
-function App() {
+import { StarWars } from './components/StarWars';
+import { DATA } from './data';
+
+import './app.scss';
+import { UserAvatar } from './components/UserAvatar';
+
+const { Header, Content } = Layout;
+const { Title, Text } = Typography;
+
+export const App = () => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
-}
+    <Layout>
+      <Header className='app-header'>
+        <Title level={4}>
+          <Text type='secondary'>{DATA.task.title}</Text>
+        </Title>
+      </Header>
 
-export default App;
+      <Content className='app-content'>
+        <div className='container'>
+          <UserAvatar />
+          <StarWars />
+        </div>
+      </Content>
+    </Layout>
+  );
+};
